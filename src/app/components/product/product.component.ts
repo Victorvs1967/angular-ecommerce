@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -7,4 +11,15 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent {
 
+  productList: Product[] = [];
+  category = 'laptop';
+
+  constructor(private productService: ProductService, private cartService: CartService, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  addToCart(id: string) {
+    this.router.navigate(['\cart']);
+  }
+  
 }
